@@ -6,16 +6,8 @@ import DarkModeToggle from "./components/DarkModeToggle"
 import { calculateCorrectAccuracy } from "./utils/helpers"
 
 const App = () => {
-  const {
-    state,
-    words,
-    timeLeft,
-    typed,
-    errors,
-    totalTyped,
-    updateWords,
-    restart,
-  } = useEngine()
+  const { state, words, timeLeft, typed, errors, totalTyped, restart } =
+    useEngine()
 
   return (
     <>
