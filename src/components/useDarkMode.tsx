@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 
+// 用于检查用户设备是否偏好暗色主题
 const matchDark = "(prefers-color-scheme:dark)"
 
 const useDarkMode = () => {

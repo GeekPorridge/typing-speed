@@ -3,9 +3,19 @@ import RestartButton from "./components/RestartButton"
 import UserTypings from "./components/UserTypings"
 import useEngine from "./hooks/useEngine"
 import DarkModeToggle from "./components/DarkModeToggle"
+import { calculateCorrectAccuracy } from "./utils/helpers"
 
 const App = () => {
-  const { state, words, updateWords, timeLeft } = useEngine()
+  const {
+    state,
+    words,
+    timeLeft,
+    typed,
+    errors,
+    totalTyped,
+    updateWords,
+    restart,
+  } = useEngine()
 
   return (
     <>
@@ -13,16 +23,21 @@ const App = () => {
       <CountdownTimer timeLeft={timeLeft} />
       <WordsContainer>
         <GenerateWords words={words} />
-        <UserTypings userInput={"heello "} className='absolute inset-0' />
+        <UserTypings
+          userInput={typed}
+          className='absolute inset-0'
+          words={words}
+        />
       </WordsContainer>
       <RestartButton
         className={"mx-auto mt-10 text-slate-500"}
-        onRestart={() => null}
+        onRestart={restart}
       />
       <Results
-        errors={10}
-        accuracyPercentage={65}
-        total={200}
+        state={state}
+        errors={errors}
+        accuracyPercentage={calculateCorrectAccuracy(totalTyped, errors)}
+        total={totalTyped}
         className={`mt-10`}
       />
     </>
