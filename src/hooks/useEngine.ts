@@ -5,7 +5,7 @@ import useTyping from "./useTyping"
 import { countErrors } from "src/utils/helpers"
 
 export type State = "start" | "run" | "finish"
-const initialTime = 10
+const initialTime = 30
 
 const useEngine = () => {
   const [state, setState] = useState<State>("start")
